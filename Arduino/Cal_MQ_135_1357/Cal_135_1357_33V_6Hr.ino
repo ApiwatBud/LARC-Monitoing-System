@@ -19,8 +19,8 @@
 // #define RL_MQ137 3810.0
 
 // ================= TIMER =================
-const unsigned long SAMPLE_INTERVAL = 1800000UL; // 30 นาที
-const int TOTAL_SAMPLES = 12; // 6 ชม = 12 ครั้ง
+const unsigned long SAMPLE_INTERVAL = 1800000UL; // 30 Min
+const int TOTAL_SAMPLES = 12; // 6 Hr = 12 Times
 
 unsigned long lastSampleTime = 0;
 int sampleCount = 0;
