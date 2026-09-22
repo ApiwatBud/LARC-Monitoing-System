@@ -5,15 +5,9 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
-/*  Change 
-    DEV_ID
-    WIFI password
-    RL 135,137
-    RO 135,137
- */
 
 /* ===================== DEVICE ===================== */
-#define DEV_ID "EnviBox2"
+#define DEV_ID "TestBox0"  // your registered device name
 
 /* ===================== PIN ======================== */
 #define MQ137_PIN 35
@@ -22,38 +16,31 @@
 #define DHTPIN    23
 
 /* ===================== ADC ======================== */
+//up to your control board of processor
 #define ADC_VOLTAGE 3.3
 #define ADC_MAX     4095.0
 #define ADC_MID     2048
 
 /* ===================== WIFI ======================= */
-const char* ssid     = "Fahmui-IOT";
-const char* password = "6Kbe4yhY";  //6Kbe4yhY For Dev 2  ;  4bgtuRUT For Dev 1
-
+const char* ssid     = "";
+const char* password = "";  
 /* ===================== SERVER ===================== */
-const char* serverURL = "http://10.201.30.244:3000/api/v1/device_sensor_data_raw";
+const char* serverURL = "";
 
-/* ===================== MQ RL (วัดจริง) ============ */
-// Box 1
-// #define RL_MQ137 2230.0   // 2.23 kΩ
-// #define RL_MQ135 820.0    // 0.82 kΩ
-
-// Box 2
-#define RL_MQ137 3810.0   // 3.81 kΩ
-#define RL_MQ135 950.0    // 0.95 kΩ
+/* ===================== MQ RL (Measure at the sensor) ============ */
+#define RL_MQ137 3810.0   // for example  3.81 kΩ = 3810.0
+#define RL_MQ135 950.0    
 
 
 /* ===================== MQ-137 NH3 ================= */
-#define SLOPE_137  -0.268
-#define A_137       0.624
-#define R0_137      7984.06   // Box 2
-
-
+#define SLOPE_137  -0.268       //from datasheet
+#define A_137       0.624       //from datasheet
+#define R0_137      7984.06     //  R0 from your sensor
 
 /* ===================== MQ-135 AIR ================= */
 #define SLOPE_135  -0.42
 #define A_135       0.77
-#define R0_135      8567.21  // Box 2
+#define R0_135      8567.21  
 
 /* ===================== DHT ======================== */
 #define DHTTYPE DHT21
@@ -70,7 +57,7 @@ float alpha = 0.2;
 #define MIC_SAMPLES 400
 #define MIC_A       24.17f   // calibration slope
 #define MIC_B       63.96f   // calibration intercept (dB)
-float micRefRMS = 50.0;   // ค่าเงียบ (cal ครั้งเดียว)
+float micRefRMS = 50.0;      // ค่าเงียบ (cal ครั้งเดียว)
 
 /* ===================== TIMER ===================== */
 unsigned long lastMillis = 0;
